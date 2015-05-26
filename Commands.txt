@@ -1,0 +1,7 @@
+javac KNN.java
+
+javah KNN
+
+nvcc -I"/usr/lib/jvm/java-7-openjdk-amd64/include" -I"/usr/lib/jvm/java-7-openjdk-amd64/include/linux" --ptxas-options=-v --compiler-options '-fPIC' -lcuda -D_CRT_SECURE_NO_DEPRECATE -o libKNN.so --shared KNN_wrapper.cu
+
+java -Djava.library.path=. KNN
